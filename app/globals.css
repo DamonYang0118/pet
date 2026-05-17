@@ -508,16 +508,14 @@ section { padding: clamp(34px, 6vw, 76px) 0; }
 
 .store-grid {
   display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
+  grid-template-columns: 1fr;
   gap: 20px;
-  align-items: stretch;
 }
 
 .store-info,
 .map-card {
   border-radius: var(--radius-md);
   overflow: hidden;
-  min-height: 360px;
   box-shadow: var(--shadow-soft);
 }
 
@@ -527,9 +525,6 @@ section { padding: clamp(34px, 6vw, 76px) 0; }
     #1b3549;
   color: #fff;
   padding: clamp(26px, 4vw, 42px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .store-info h3 {
@@ -549,12 +544,14 @@ section { padding: clamp(34px, 6vw, 76px) 0; }
 .map-card {
   border: 1px solid var(--line);
   background: #fff;
+  aspect-ratio: 16 / 9;
+  min-height: 420px;
 }
 
 .map-card img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 
@@ -619,8 +616,7 @@ footer {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .store-grid { grid-template-columns: 1fr; }
-  .map-card { min-height: 420px; }
+  .map-card { min-height: 380px; }
 }
 
 @media (max-width: 720px) {
@@ -686,9 +682,7 @@ footer {
   .env-arrow.prev { left: 12px; }
   .env-arrow.next { right: 12px; }
 
-  .store-info,
   .map-card { min-height: auto; }
-  .map-card { aspect-ratio: 16 / 9; }
 }
 
 @media (max-width: 420px) {
