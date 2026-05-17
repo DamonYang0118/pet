@@ -1,4 +1,5 @@
 import { EnvironmentCarousel } from "./environment-carousel";
+import { ReviewCarousel } from "./review-carousel";
 
 const services = [
   {
@@ -28,24 +29,6 @@ const services = [
     title: "幼宠适应",
     desc: "缩短流程、降低噪音、正向奖励，帮助幼宠建立温和洗护体验。",
     price: "¥68 起"
-  }
-];
-
-const reviews = [
-  {
-    quote: "我家狗很怕吹风，店员会分段休息，洗完也没有以前那种焦虑状态。",
-    name: "林女士",
-    pet: "柯基主人"
-  },
-  {
-    quote: "猫咪洗护时段很安静，能看到操作区，过程比想象中顺利很多。",
-    name: "周先生",
-    pet: "布偶猫主人"
-  },
-  {
-    quote: "造型不会剪得夸张，美容师会先问日常活动习惯，细节很专业。",
-    name: "赵女士",
-    pet: "比熊主人"
   }
 ];
 
@@ -164,16 +147,7 @@ export default function Home() {
             <h2>客户评价</h2>
             <p>每次服务结束都会记录宠物状态，长期客户可以追踪毛发与皮肤变化。</p>
           </div>
-          <div className="review-grid">
-            {reviews.map((review) => (
-              <article className="review-card" key={review.name}>
-                <div className="stars">★ ★ ★ ★ ★</div>
-                <p>{review.quote}</p>
-                <h4>{review.name}</h4>
-                <span>{review.pet}</span>
-              </article>
-            ))}
-          </div>
+          <ReviewCarousel />
         </section>
 
         <section id="store">
