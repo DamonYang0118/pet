@@ -121,6 +121,10 @@ export default function Home() {
                   </select>
                 </div>
                 <div className="field full">
+                  <label htmlFor="arrival-time">期望到店时间</label>
+                  <input id="arrival-time" type="datetime-local" />
+                </div>
+                <div className="field full">
                   <label htmlFor="note">备注</label>
                   <textarea id="note" placeholder="例如：怕吹风、容易紧张、需要剪指甲" />
                 </div>
