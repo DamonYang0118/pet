@@ -33,6 +33,27 @@ const services = [
   }
 ];
 
+const priceGroups = [
+  {
+    title: "犬只洗护",
+    note: "含基础清洁、耳道护理、脚底毛和指甲修剪",
+    rows: [
+      { size: "小型犬", weight: "10kg 内", bath: "¥88", styling: "¥168" },
+      { size: "中型犬", weight: "10-20kg", bath: "¥128", styling: "¥238" },
+      { size: "大型犬", weight: "20kg 以上", bath: "¥188", styling: "¥328" }
+    ]
+  },
+  {
+    title: "猫咪护理",
+    note: "按情绪状态安排低刺激流程，需提前确认档期",
+    rows: [
+      { size: "短毛猫", weight: "日常洗护", bath: "¥158", styling: "¥258" },
+      { size: "长毛猫", weight: "深层梳理", bath: "¥198", styling: "¥328" },
+      { size: "局部护理", weight: "去结/修脚毛", bath: "¥68", styling: "¥128" }
+    ]
+  }
+];
+
 export default function Home() {
   const year = new Date().getFullYear();
 
@@ -59,14 +80,14 @@ export default function Home() {
       </header>
 
       <main id="home" className="container">
-        <section className="hero" id="prices">
+        <section className="hero">
           <div>
             <span className="hero-tag">✦ 一宠一浴巾 · 可视化洗护</span>
             <h1>泡泡爪 Pet Spa</h1>
             <p>为猫狗提供洗澡、精修、皮毛护理和幼宠适应服务。透明操作区、低噪吹干间和独立消毒工具，让每次洗护都更安心。</p>
             <div className="hero-actions">
-              <button className="hero-btn primary" type="button">📅 立即预约</button>
-              <button className="hero-btn" type="button">☰ 查看价目</button>
+              <a className="hero-btn primary" href="#booking">📅 立即预约</a>
+              <a className="hero-btn" href="#prices">☰ 查看价目</a>
             </div>
             <div className="hero-stats">
               <div className="stat"><strong>4.9</strong><span>本地客户评分</span></div>
@@ -75,7 +96,7 @@ export default function Home() {
             </div>
           </div>
 
-          <QuickBookingForm />
+          <QuickBookingForm id="booking" />
         </section>
 
         <section id="services">
@@ -92,6 +113,49 @@ export default function Home() {
                 <div className="service-foot"><span>{service.price}</span><span>→</span></div>
               </article>
             ))}
+          </div>
+        </section>
+
+        <section id="prices">
+          <div className="section-head">
+            <h2>价目表</h2>
+            <p>按宠物体型、毛量、打结程度和情绪状态评估，复杂造型或特殊护理到店后确认最终价格。</p>
+          </div>
+          <div className="price-grid">
+            {priceGroups.map((group) => (
+              <article className="price-card" key={group.title}>
+                <div className="price-card-head">
+                  <div>
+                    <h3>{group.title}</h3>
+                    <p>{group.note}</p>
+                  </div>
+                  <span>到店评估</span>
+                </div>
+                <div className="price-table" role="table" aria-label={`${group.title}价目表`}>
+                  <div className="price-row price-row-head" role="row">
+                    <span role="columnheader">类型</span>
+                    <span role="columnheader">说明</span>
+                    <span role="columnheader">洗护</span>
+                    <span role="columnheader">造型</span>
+                  </div>
+                  {group.rows.map((row) => (
+                    <div className="price-row" role="row" key={`${group.title}-${row.size}`}>
+                      <span role="cell">{row.size}</span>
+                      <span role="cell">{row.weight}</span>
+                      <strong role="cell">{row.bath}</strong>
+                      <strong role="cell">{row.styling}</strong>
+                    </div>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+          <div className="price-note">
+            <strong>常见加项</strong>
+            <span>开结 ¥30 起</span>
+            <span>药浴护理 ¥68 起</span>
+            <span>幼宠适应 ¥68 起</span>
+            <span>接送需提前预约</span>
           </div>
         </section>
 

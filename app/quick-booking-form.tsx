@@ -13,7 +13,11 @@ function getDailyArrivalDateTime() {
   return new Date(arrivalDate.getTime() - timezoneOffset).toISOString().slice(0, 16);
 }
 
-export function QuickBookingForm() {
+type QuickBookingFormProps = {
+  id?: string;
+};
+
+export function QuickBookingForm({ id }: QuickBookingFormProps) {
   const [arrivalDateTime, setArrivalDateTime] = useState("");
 
   useEffect(() => {
@@ -21,7 +25,7 @@ export function QuickBookingForm() {
   }, []);
 
   return (
-    <aside className="quick-card">
+    <aside className="quick-card" id={id}>
       <h3>快速预约</h3>
       <p>提交后门店会在 10 分钟内确认档期。</p>
       <form>
